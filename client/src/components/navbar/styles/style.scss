@@ -1,0 +1,60 @@
+.navbar__container{
+    padding: 10px 3vw;
+    background-color: rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(5px);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    img{
+        width: 45px;
+        height: 45px;
+        object-fit: contain;
+    }
+
+    .utilities{
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        font-size: 16px;
+
+        .network{
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: #000;
+            color: #fff;
+            border-radius: 16px;
+            padding: 7px 15px;
+            text-transform: capitalize;
+            font-size: 15px;
+            font-weight: 500;
+            border: 2px solid rgb(91, 162, 255);
+            
+            img{
+                width: 25px;
+                height: 25px;
+                object-fit: contain;
+            }
+        }
+        
+        .wallet{
+            font-size: 15px;
+            padding: 7px 15px;
+            text-transform: capitalize;
+            border-radius: 16px;
+            color: #fff;
+            font-weight: 500;
+            border: 2px solid rgba(104, 241, 106, 0.685);
+        }
+        
+        .downIcon{
+            border: 2px solid rgb(255, 252, 96);
+            font-size: 17px;
+            padding: 7px;
+            border-radius: 16px;
+            color: #fff;
+            background: #000;
+        }
+    }
+}
