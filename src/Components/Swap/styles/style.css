@@ -1,0 +1,223 @@
+.swap__container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate3d(-50%, -50%, 0);
+          transform: translate3d(-50%, -50%, 0);
+  background-color: white;
+  color: #000;
+  width: 30vw;
+  -webkit-backdrop-filter: blur(3px);
+          backdrop-filter: blur(3px);
+  padding: 25px 35px;
+  border-radius: 16px;
+}
+@media (max-width: 768px) {
+  .swap__container {
+    width: 75vw;
+  }
+}
+.swap__container .title {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  font-weight: 500;
+  position: relative;
+}
+@media screen and (max-width: 768px) {
+  .swap__container .title {
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: reverse;
+        -ms-flex-direction: row-reverse;
+            flex-direction: row-reverse;
+  }
+}
+.swap__container .title div .MuiButton-root {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 5px;
+  padding: 0 !important;
+  color: #000;
+  min-width: none !important;
+  text-transform: capitalize;
+  font-size: 17px;
+}
+@media (max-width: 768px) {
+  .swap__container .title div .MuiButton-root {
+    font-size: 14px;
+  }
+}
+.swap__container .title div i {
+  font-weight: 500;
+  font-size: 19px;
+  color: #000;
+}
+@media (max-width: 768px) {
+  .swap__container .title div i {
+    font-size: 14px;
+  }
+}
+.swap__container .title div:nth-child(2) {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  font-weight: 600;
+  font-size: 20px;
+  -webkit-transform: translate3d(-50%, -50%, 0);
+          transform: translate3d(-50%, -50%, 0);
+}
+@media (max-width: 768px) {
+  .swap__container .title div:nth-child(2) {
+    font-size: 17px;
+  }
+}
+@media (max-width: 768px) {
+  .swap__container .title div:nth-child(3) {
+    display: none;
+  }
+}
+.swap__container .down__container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+.swap__container .down__container i {
+  background: #627eea;
+  padding: 10px;
+  border-radius: 50%;
+  color: #fff;
+  font-size: 18px;
+  font-weight: bold;
+}
+@media (max-width: 768px) {
+  .swap__container .down__container i {
+    font-size: 16px;
+  }
+}
+.swap__container .form__container {
+  background: #edeef2;
+  margin: 20px 0;
+  padding: 15px;
+  border-radius: 16px;
+}
+.swap__container .form__container .to,
+.swap__container .form__container .from {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+.swap__container .form__container .to input,
+.swap__container .form__container .from input {
+  width: 70%;
+  padding: 3px 10px;
+  font-size: 23px;
+  font-weight: 600;
+  color: #000;
+  border: none;
+  background: transparent;
+}
+@media (max-width: 768px) {
+  .swap__container .form__container .to input,
+.swap__container .form__container .from input {
+    font-size: 20px;
+  }
+}
+.swap__container .form__container .to input:focus,
+.swap__container .form__container .from input:focus {
+  outline: none;
+}
+.swap__container .form__container .to .MuiButton-root,
+.swap__container .form__container .from .MuiButton-root {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-align: center;
+      align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  background: #edeef2;
+  border-radius: 16px;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.08) 0px 6px 10px;
+          box-shadow: rgba(0, 0, 0, 0.08) 0px 6px 10px;
+  -webkit-box-align: center;
+  align-items: center;
+  background-color: white;
+  box-shadow: rgba(0, 0, 0, 0.08) 0px 6px 10px;
+  color: black;
+  cursor: pointer;
+  border-radius: 16px;
+  outline: none;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  visibility: visible;
+}
+.swap__container .form__container .to .MuiButton-root img,
+.swap__container .form__container .from .MuiButton-root img {
+  width: 25px;
+  height: 25px;
+}
+@media (max-width: 768px) {
+  .swap__container .form__container .to .MuiButton-root,
+.swap__container .form__container .from .MuiButton-root {
+    font-size: 14px;
+    padding: 5px 15px;
+  }
+}
+.swap__container .form__container .price {
+  margin-top: 10px;
+  font-size: 15px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+.swap__container .swapButton .MuiButton-root {
+  width: 100%;
+  background: #627eea;
+  color: #fff;
+  text-transform: capitalize;
+  padding: 10px 0;
+  font-size: 18px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 5px;
+  border-radius: 16px;
+}
+@media (max-width: 768px) {
+  .swap__container .swapButton .MuiButton-root {
+    font-size: 16px;
+  }
+}
