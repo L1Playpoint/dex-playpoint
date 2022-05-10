@@ -2,7 +2,20 @@ import React from "react";
 import "./styles/style.css";
 import Button from "@mui/material/Button";
 
+import { useDataLayer } from "../../Context/DataLayer";
+
+import {ConnectWallet} from "../../Utils/ConnectWallet";
+
 export default function Navbar() {
+  // eslint-disable-next-line
+  const [{ isWalletConnected }, dispatch] = useDataLayer();
+
+  const handleConnectWallet = () => {
+    if(!isWalletConnected) {
+      ConnectWallet(dispatch);
+    }
+  }
+  
   return (
     <div className="navbar__container">
       <img src="https://ik.imagekit.io/lexworld/Logo.png" alt="Playpoint.ai" />
@@ -19,33 +32,13 @@ export default function Navbar() {
           </span>
         </Button>
 
-        {/* {
-          userPublicAddress !== "" ? (
-            <Button className="network" onClick={connectWallet}>
-              <img
-
-                src="https://ik.imagekit.io/lexworld/Logo.png"
-                alt=""
-              />
-              <span>Disconnect</span>
-              <span>
-                <i className="ri-arrow-down-s-line"></i>
-              </span>
-            </Button>
-          ) : (
-            <Button className="network" onClick={connectWallet}>
-              <img
-
-                src="https://ik.imagekit.io/lexworld/Logo.png"
-                alt=""
-              />
-              <span>Connect</span>
-              <span>
-                <i className="ri-arrow-down-s-line"></i>
-              </span>
-            </Button>
-          )
-        } */}
+        <Button onClick={handleConnectWallet} className="network">
+          <img src="https://ik.imagekit.io/lexworld/Logo.png" alt="" />
+          <span>Connect</span>
+          <span>
+            <i className="ri-arrow-down-s-line"></i>
+          </span>
+        </Button>
         <Button className="downIcon">
           <i className="ri-menu-3-line"></i>
         </Button>

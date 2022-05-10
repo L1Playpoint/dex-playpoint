@@ -1,5 +1,6 @@
 export const initialState = {
     isWalletConnected: false,
+    account: ""
 }
 
 export const reducer = (state, action) => {
@@ -8,6 +9,7 @@ export const reducer = (state, action) => {
             return {
                 ...state,
                 isWalletConnected: action?.payload?.isWalletConnected,
+                account: action?.payload?.account
             }
         default:
             return state;
