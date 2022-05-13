@@ -39,7 +39,7 @@ export default function Swap() {
           </Button>
         </div>
         <div className="price">
-          <span>${avaxMarketPrice}</span>
+          <span>Market Price: ${avaxMarketPrice}</span>
           <span>Balance: {balance}</span>
         </div>
       </div>
@@ -57,7 +57,7 @@ export default function Swap() {
           </Button>
         </div>
         <div className="price">
-          <span>$0.015</span>
+          <span>Market Price: $0.015</span>
         </div>
       </div>
 

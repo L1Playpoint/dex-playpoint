@@ -14,9 +14,15 @@ export default function Networks() {
     });
   };
 
-  const handleConnectWallet = () => {
-      ConnectWallet(dispatch);
+  const handleConnectWallet = (network) => {
+      /**
+       * @dev Algorithm
+       * 1. Check the network chain id 
+       * 2. Provide chain detail from Networks.json where it got chain id
+       */
+      ConnectWallet(dispatch, network);
       toast.success("Wallet Connected!");
+
       dispatch({
         type: "TOGGLE_NETWORKS",
       });
@@ -33,7 +39,7 @@ export default function Networks() {
         </div>
 
         <div className="networks">
-          <Button onClick={handleConnectWallet} className="network_item">
+          <Button onClick={() => handleConnectWallet("0xA869")} className="network_item">
             <span>Avalanche C-Chain</span>
             <img
               src="https://uxwing.com/wp-content/themes/uxwing/download/10-brands-and-social-media/avalanche-avax.png"
