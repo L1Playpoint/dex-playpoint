@@ -27,16 +27,9 @@
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
-  font-weight: 500;
+  font-weight: 600;
   position: relative;
-}
-@media screen and (max-width: 768px) {
-  .swap__container .title {
-    -webkit-box-orient: horizontal;
-    -webkit-box-direction: reverse;
-        -ms-flex-direction: row-reverse;
-            flex-direction: row-reverse;
-  }
+  font-size: 1.2em;
 }
 .swap__container .title div .MuiButton-root {
   display: -webkit-box;
@@ -46,6 +39,7 @@
       -ms-flex-align: center;
           align-items: center;
   gap: 5px;
+  text-align: center;
   padding: 0 !important;
   color: #000;
   min-width: none !important;
@@ -65,25 +59,6 @@
 @media (max-width: 768px) {
   .swap__container .title div i {
     font-size: 14px;
-  }
-}
-.swap__container .title div:nth-child(2) {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  font-weight: 600;
-  font-size: 20px;
-  -webkit-transform: translate3d(-50%, -50%, 0);
-          transform: translate3d(-50%, -50%, 0);
-}
-@media (max-width: 768px) {
-  .swap__container .title div:nth-child(2) {
-    font-size: 17px;
-  }
-}
-@media (max-width: 768px) {
-  .swap__container .title div:nth-child(3) {
-    display: none;
   }
 }
 .swap__container .down__container {

@@ -53,22 +53,35 @@ $border-radius: 14px;
       background: #fff;
       font-weight: 500;
       border: 2px solid rgba(104, 241, 106, 0.685);
+      gap: 7px;
+      display: flex;
+      align-items: center;
 
+      img {
+        width: 20px;
+        height: 20px;
+        object-fit: contain;
+      }
+      
       @media (max-width: 768px) {
         display: none;
       }
     }
-
+    
     .downIcon {
       font-size: 17px;
-      padding: 3px 10px;
+      padding: 5px 15px;
+      font-size: 1em;
       border-radius: $border-radius;
       color: #000;
       background: #fff;
       min-width: auto;
+      gap: 10px;
+      text-transform: capitalize;
+      border: 2px solid rgba(255, 150, 12, 0.685);
 
       @media (max-width: 768px) {
-        border: 2px solid rgba(104, 241, 106, 0.685);
+        border: 2px solid rgba(255, 150, 12, 0.685);
         padding: 5px;
       }
     }

@@ -1,17 +1,25 @@
 import { Button } from "@mui/material";
 import React from "react";
 import "./styles/style.css";
+import { useDataLayer } from "../../Context/DataLayer";
+import { ConnectWallet } from "../../Utils/ConnectWallet";
+import { toast } from "react-toastify";
 
 export default function Swap() {
+  // eslint-disable-next-line
+  const [{ isWalletConnected, avaxMarketPrice, balance }, dispatch] = useDataLayer();
+
+  const handleConnectWallet = () => {
+    if (!isWalletConnected) {
+      ConnectWallet(dispatch);
+      toast.success("Wallet Connected!");
+    }
+  };
+
   return (
     <div className="swap__container">
       <div className="title">
-        <div>
-          <Button>
-            History <i className="ri-history-line"></i>
-          </Button>
-        </div>
-        <div>Playpoint Swap</div>
+        <div>Playpoint Pre-Sale</div>
         <div>
           <Button>
             <i className="ri-information-line"></i>
@@ -31,8 +39,8 @@ export default function Swap() {
           </Button>
         </div>
         <div className="price">
-            <span>$3968</span>
-            <span>Balance: 0</span>
+          <span>${avaxMarketPrice}</span>
+          <span>Balance: {balance}</span>
         </div>
       </div>
 
@@ -44,25 +52,24 @@ export default function Swap() {
         <div className="to">
           <input disabled type="text" placeholder="0" />
           <Button disabled>
-            <img
-              src="https://ik.imagekit.io/lexworld/Logo.png"
-              alt=""
-            />{" "}
-            <span>PPTT</span> 
-            {/* <i className="ri-arrow-down-s-line"></i> */}
+            <img src="https://ik.imagekit.io/lexworld/Logo.png" alt="" />{" "}
+            <span>PPTT</span>
           </Button>
         </div>
         <div className="price">
-            <span>$3968</span>
-            <span>Balance: 0</span>
+          <span>$0.015</span>
         </div>
       </div>
 
       <div className="swapButton">
+        {!isWalletConnected && (
+          <Button onClick={handleConnectWallet}>Connect Wallet</Button>
+        )}
+        {isWalletConnected && (
           <Button>
-            {/* Proceed <i className="ri-arrow-right-line"></i> */}
-              Connect Wallet
+            Proceed <i className="ri-arrow-right-line"></i>
           </Button>
+        )}
       </div>
     </div>
   );

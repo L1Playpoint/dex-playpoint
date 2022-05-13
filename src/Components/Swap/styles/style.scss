@@ -18,18 +18,16 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      font-weight: 500;
+      font-weight: 600;
       position: relative;
-      
-      @media screen and (max-width: 768px) {
-        flex-direction: row-reverse;
-      }
+      font-size: 1.2em;
   
       div {
         .MuiButton-root {
           display: flex;
           align-items: center;
           gap: 5px;
+          text-align:  center;
           padding: 0 !important;
           color: #000;
           min-width: none !important;
@@ -48,24 +46,6 @@
           @media (max-width: 768px) {
             font-size: 14px;
           }
-        }
-      }
-  
-      div:nth-child(2) {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        font-weight: 600;
-        font-size: 20px;
-        transform: translate3d(-50%, -50%, 0);
-  
-        @media (max-width: 768px) {
-          font-size: 17px;
-        }
-      }
-      div:nth-child(3) {
-        @media (max-width: 768px) {
-          display: none;
         }
       }
     }
