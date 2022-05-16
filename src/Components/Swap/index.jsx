@@ -102,7 +102,7 @@ export default function Swap({ isLoading }) {
             </div>
             <div className="price">
               <span>Market Price: ${avaxMarketPrice}</span>
-              <span>Balance: {balance}</span>
+              <span>Balance: {balance.toFixed(2)}</span>
             </div>
           </div>
 
