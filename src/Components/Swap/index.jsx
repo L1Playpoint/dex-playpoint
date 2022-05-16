@@ -38,7 +38,7 @@ export default function Swap({ isLoading }) {
   const handleSwap = async () => {
     const dollarValue = swapAmount.from * avaxMarketPrice;
 
-    if (swapAmount.from >= 3) {
+    if (swapAmount.from >= 3 && balance >= swapAmount.from) {
       try {
         const contract = new ethers.Contract(
           "0xa19d8B0c5039aA15969a76124993e1369dc54D1B",
