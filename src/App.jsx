@@ -5,16 +5,19 @@ import Swap from "./Components/Swap";
 import { useDataLayer } from "./Context/DataLayer";
 
 export default function App() {
-  window.ethereum.on("accountsChanged", async () => {
-    window.location.reload();
-  });
-
   const [isLoading, setIsLoading] = React.useState(true);
   const [,dispatch] = useDataLayer()
 
-  // 0x2d5FDBc0D00EefcF459580Be226B4380CB30bC99
+  if (typeof window.ethereum !== "undefined") {
+    window.ethereum.on("accountsChanged", async () => {
+      window.location.reload();
+    });
+  }else{
+    window.alert("Please install MetaMask!")
+  }
 
   React.useEffect(() => {
+    // deepcode ignore PromiseNotCaughtGeneral
     fetch("https://api.coingecko.com/api/v3/coins/avalanche-2", {
       method: "GET",
       headers: {
