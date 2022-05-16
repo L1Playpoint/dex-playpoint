@@ -15,13 +15,7 @@ export default function Networks() {
   };
 
   const handleConnectWallet = (network) => {
-      /**
-       * @dev Algorithm
-       * 1. Check the network chain id 
-       * 2. Provide chain detail from Networks.json where it got chain id
-       */
-      ConnectWallet(dispatch, network);
-      toast.success("Wallet Connected!");
+      
 
       dispatch({
         type: "TOGGLE_NETWORKS",

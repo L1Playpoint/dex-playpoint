@@ -3,9 +3,9 @@ export const initialState = {
   account: "",
   provider: null,
   signer: null,
-  displayNetworks: false,
   balance: 0,
   avaxMarketPrice: 0,
+  contract: null
 };
 
 export const reducer = (state, action) => {
@@ -18,7 +18,6 @@ export const reducer = (state, action) => {
         provider: action?.payload?.provider,
         signer: action?.payload?.signer,
         balance: action?.payload?.balance,
-        avaxMarketPrice: action?.payload?.avaxMarketPrice,
       };
 
     case "DISCONNECT_WALLET":
@@ -27,11 +26,14 @@ export const reducer = (state, action) => {
         ...initialState,
       };
 
-    case "TOGGLE_NETWORKS":
-      return {
-        ...state,
-        displayNetworks: !state.displayNetworks,
-      };
+      case "SET_MARKET_PRICE":
+        return {
+          ...state,
+          avaxMarketPrice: action?.payload?.avaxMarketPrice,
+        };
+
+    case "SWAP_AMOUNT":
+
 
     default:
       return state;

@@ -4,10 +4,10 @@ import generateAvatar from "github-like-avatar-generator";
 import { toast } from "react-toastify";
 import { useDataLayer } from "../../Context/DataLayer";
 import "./styles/style.css";
-import { ethers } from "ethers";
+import { ConnectWallet } from "../../Utils/ConnectWallet";
 
 export default function Navbar() {
-  const [{ isWalletConnected, account, provider }, dispatch] = useDataLayer();
+  const [{ isWalletConnected, account }, dispatch] = useDataLayer();
 
   let avatar = generateAvatar({
     blocks: Math.floor(Math.random() * 6) * 2, // must be multiple of two
@@ -16,9 +16,13 @@ export default function Navbar() {
 
   const handleConnectWallet = () => {
     if (!isWalletConnected) {
-      dispatch({
-        type: "TOGGLE_NETWORKS",
-      });
+      /**
+       * @dev Algorithm
+       * 1. Check the network chain id 
+       * 2. Provide chain detail from Networks.json where it got chain id
+       */
+       ConnectWallet(dispatch);
+       toast.success("Wallet Connected!");
     }
   };
 
@@ -34,13 +38,15 @@ export default function Navbar() {
       <img src="https://ik.imagekit.io/lexworld/Logo.png" alt="Playpoint.ai" />
 
       <div className="utilities">
-        {/* <Button className="network">
-          <img
-            src="https://uxwing.com/wp-content/themes/uxwing/download/10-brands-and-social-media/avalanche-avax.png"
-            alt=""
-          />
-          <span>Avalanche</span>
-        </Button> */}
+        {isWalletConnected && (
+          <Button className="network">
+            <img
+              src="https://uxwing.com/wp-content/themes/uxwing/download/10-brands-and-social-media/avalanche-avax.png"
+              alt=""
+            />
+            <span>Avalanche</span>
+          </Button>
+        )}
 
         {!isWalletConnected && (
           <Button onClick={handleConnectWallet} className="wallet">
@@ -64,10 +70,10 @@ export default function Navbar() {
             </div>
           </div>
         )}
-        <Button className="downIcon">
+        {/* <Button className="downIcon">
           <i className="ri-menu-3-line"></i>
           <span>Dashboard</span>
-        </Button>
+        </Button> */}
       </div>
     </div>
   );
