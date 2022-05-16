@@ -22,7 +22,7 @@ export const ConnectWallet = async (dispatch) => {
       const signer = provider.getSigner();
 
       if (provider !== null) {
-        const balance = await provider.getBalance(accounts[0]);
+        const balance = await provider.getBalance(accounts[0]).toFixed(2);
 
             dispatch({
               type: "SET_WALLET_CONNECTED",
@@ -78,7 +78,7 @@ export const ConnectWallet = async (dispatch) => {
           const signer = provider.getSigner();
 
           if (provider !== null) {
-            const balance = await provider.getBalance(accounts[0]);
+            const balance = await provider.getBalance(accounts[0]).toFixed(2);
 
             dispatch({
               type: "SET_WALLET_CONNECTED",
@@ -98,5 +98,5 @@ export const ConnectWallet = async (dispatch) => {
           });
         }
     }
-  } else throw new Error({ msg: "Metamask not found!" });
+  } else alert({ msg: "Metamask not found!" });
 };

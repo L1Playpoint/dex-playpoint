@@ -44,7 +44,7 @@ export default function Swap({ isLoading }) {
           "0xa19d8B0c5039aA15969a76124993e1369dc54D1B",
           ContractABI,
           signer
-        );
+      );
 
         const signedSigner = contract.connect(signer);
 
