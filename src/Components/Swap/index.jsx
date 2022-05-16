@@ -10,7 +10,7 @@ import ContractABI from "../../Helpers/ContractABI.json";
 export default function Swap({ isLoading }) {
   // eslint-disable-next-line
   const [
-    { isWalletConnected, avaxMarketPrice, contract, signer, balance },
+    { isWalletConnected, avaxMarketPrice, signer, balance },
     dispatch,
   ] = useDataLayer();
 
@@ -38,34 +38,38 @@ export default function Swap({ isLoading }) {
   const handleSwap = async () => {
     const dollarValue = swapAmount.from * avaxMarketPrice;
 
-    if (swapAmount.from >= 3 && balance >= swapAmount.from) {
-      try {
-        const contract = new ethers.Contract(
-          "0xa19d8B0c5039aA15969a76124993e1369dc54D1B",
-          ContractABI,
-          signer
-      );
-
-        const signedSigner = contract.connect(signer);
-
-        await signedSigner.invest(
-          ethers.utils.parseUnits(swapAmount.from, 18),
-          ethers.utils.parseUnits((dollarValue * 66).toFixed(2), 18),
-          {
-            value: ethers.utils.parseUnits(swapAmount.from, 18),
-          }
+    if(balance >= swapAmount.from){
+      if (swapAmount.from >= 3) {
+        try {
+          const contract = new ethers.Contract(
+            "0xa19d8B0c5039aA15969a76124993e1369dc54D1B",
+            ContractABI,
+            signer
         );
-
-        toast.success("Check Explorer for successful confirmation!");
-        setSwapAmount({
-          from: 0,
-          to: 0,
-        });
-      } catch (error) {
-        console.log(error);
+  
+          const signedSigner = contract.connect(signer);
+  
+          await signedSigner.invest(
+            ethers.utils.parseUnits(swapAmount.from, 18),
+            ethers.utils.parseUnits((dollarValue * 66).toFixed(2), 18),
+            {
+              value: ethers.utils.parseUnits(swapAmount.from, 18),
+            }
+          );
+  
+          toast.success("Check Explorer for successful confirmation!");
+          setSwapAmount({
+            from: 0,
+            to: 0,
+          });
+        } catch (error) {
+          console.log(error);
+        }
+      } else {
+        toast.error("Minimum sale amount is 3 AVAX");
       }
-    } else {
-      toast.error("Minimum sale amount is 3 AVAX");
+    }else{
+      toast.error("Insufficient Balance!");
     }
   };
 
