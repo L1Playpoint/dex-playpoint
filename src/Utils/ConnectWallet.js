@@ -10,8 +10,8 @@ export const ConnectWallet = async (dispatch) => {
     try {
       await ethereum.request({
         method: "wallet_switchEthereumChain",
-        // params: [{ chainId: "0xA86A" }], mainnet
-        params: [{ chainId: "0xA869" }],
+        params: [{ chainId: "0xA86A" }],
+        // params: [{ chainId: "0xA869" }],
       });
 
       const accounts = await ethereum.request({
@@ -45,28 +45,28 @@ export const ConnectWallet = async (dispatch) => {
           await ethereum.request({
             method: "wallet_addEthereumChain",
             params: [
-              // {
-              //   chainId: "0xA86A",
-              //   nativeCurrency: {
-              //     name: "Avalanche",
-              //     symbol: "AVAX",
-              //     decimals: 18,
-              //   },
-              //   chainName: "Avalanche Mainnet C-Chain",
-              //   rpcUrls: ["https://api.avax.network/ext/bc/C/rpc"],
-              //   blockExplorerUrls: ["https://snowtrace.io/"],
-              // },
               {
-                chainId: "0xA869",
-                chainName: "Avalanche Testnet C-Chain",
+                chainId: "0xA86A",
                 nativeCurrency: {
                   name: "Avalanche",
                   symbol: "AVAX",
                   decimals: 18,
                 },
-                rpcUrls: ["https://api.avax-test.network/ext/bc/C/rpc"],
-                blockExplorerUrls: ["https://testnet.snowtrace.io/"],
+                chainName: "Avalanche Mainnet C-Chain",
+                rpcUrls: ["https://api.avax.network/ext/bc/C/rpc"],
+                blockExplorerUrls: ["https://snowtrace.io/"],
               },
+              // {
+              //   chainId: "0xA869",
+              //   chainName: "Avalanche Testnet C-Chain",
+              //   nativeCurrency: {
+              //     name: "Avalanche",
+              //     symbol: "AVAX",
+              //     decimals: 18,
+              //   },
+              //   rpcUrls: ["https://api.avax-test.network/ext/bc/C/rpc"],
+              //   blockExplorerUrls: ["https://testnet.snowtrace.io/"],
+              // },
             ],
           });
 

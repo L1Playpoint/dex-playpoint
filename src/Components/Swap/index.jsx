@@ -42,7 +42,7 @@ export default function Swap({ isLoading }) {
       if (swapAmount.from >= 3) {
         try {
           const contract = new ethers.Contract(
-            "0xa19d8B0c5039aA15969a76124993e1369dc54D1B",
+            "0x4B90f169B7f80AAdc5258be4b82a0cD95d661551",
             ContractABI,
             signer
         );
