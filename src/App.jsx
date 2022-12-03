@@ -209,9 +209,17 @@ export default function App() {
             loading="lazy"
           />
           <p>Playpoint Swap</p>
-          <a href="">Swap</a>
-          <a href="">Liquidity</a>
-          <a href="">Docs</a>
+          <a href="#">Swap</a>
+          <a
+            target="_blank"
+            rel="noreferrer"
+            href="https://app.uniswap.org/#/pool/228006"
+          >
+            Liquidity
+          </a>
+          <a target="_blank" rel="noreferrer" href="https://docs.playpoint.ai/">
+            Docs
+          </a>
         </div>
 
         <div className="navbar__right">
