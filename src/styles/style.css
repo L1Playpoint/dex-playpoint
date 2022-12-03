@@ -9,12 +9,25 @@
   font-size: 16px;
   font-weight: 500;
 }
-.app__container .navbar__container .navbar__left, .app__container .navbar__container .navbar__right {
+.app__container .navbar__container .navbar__left,
+.app__container .navbar__container .navbar__right {
   display: flex;
   align-items: center;
   gap: 10px;
 }
-.app__container .navbar__container .navbar__left a, .app__container .navbar__container .navbar__right a {
+.app__container .navbar__container .navbar__left p,
+.app__container .navbar__container .navbar__right p {
+  font-size: 18px;
+  color: #98a1c0;
+}
+@media (min-width: 576px) {
+  .app__container .navbar__container .navbar__left p,
+.app__container .navbar__container .navbar__right p {
+    display: none;
+  }
+}
+.app__container .navbar__container .navbar__left a,
+.app__container .navbar__container .navbar__right a {
   font-size: 16px;
   color: #98a1c0;
   padding: 8px 16px;
@@ -22,13 +35,22 @@
   transition: 0.2s all ease-in-out;
   border-radius: 12px;
 }
-.app__container .navbar__container .navbar__left a:hover, .app__container .navbar__container .navbar__right a:hover {
+@media (max-width: 576px) {
+  .app__container .navbar__container .navbar__left a,
+.app__container .navbar__container .navbar__right a {
+    display: none;
+  }
+}
+.app__container .navbar__container .navbar__left a:hover,
+.app__container .navbar__container .navbar__right a:hover {
   background: rgba(153, 161, 189, 0.0784313725);
 }
-.app__container .navbar__container .navbar__left img, .app__container .navbar__container .navbar__right img {
+.app__container .navbar__container .navbar__left img,
+.app__container .navbar__container .navbar__right img {
   width: 48px;
 }
-.app__container .navbar__container .navbar__left .MuiButton-root, .app__container .navbar__container .navbar__right .MuiButton-root {
+.app__container .navbar__container .navbar__left .MuiButton-root,
+.app__container .navbar__container .navbar__right .MuiButton-root {
   color: #98a1c0;
   text-transform: capitalize;
   font-size: 16px;
@@ -40,12 +62,20 @@
   align-items: center;
   gap: 8px;
 }
-.app__container .navbar__container .navbar__left .MuiButton-root img, .app__container .navbar__container .navbar__right .MuiButton-root img {
+.app__container .navbar__container .navbar__left .MuiButton-root img,
+.app__container .navbar__container .navbar__right .MuiButton-root img {
   width: 20px;
 }
-.app__container .navbar__container .navbar__left .MuiButton-root.walletBtn__container, .app__container .navbar__container .navbar__right .MuiButton-root.walletBtn__container {
+.app__container .navbar__container .navbar__left .MuiButton-root.walletBtn__container,
+.app__container .navbar__container .navbar__right .MuiButton-root.walletBtn__container {
   background: rgba(76, 130, 251, 0.24);
   color: rgb(76, 130, 251);
+}
+@media (max-width: 576px) {
+  .app__container .navbar__container .navbar__left .MuiButton-root.watchContainer,
+.app__container .navbar__container .navbar__right .MuiButton-root.watchContainer {
+    display: none;
+  }
 }
 .app__container .swap__container {
   padding: 20px;
@@ -55,6 +85,16 @@
   border-radius: 16px;
   display: block;
   margin: 120px auto;
+}
+@media (max-width: 912px) {
+  .app__container .swap__container {
+    width: 65vw;
+  }
+}
+@media (max-width: 576px) {
+  .app__container .swap__container {
+    width: 90vw;
+  }
 }
 .app__container .swap__container span {
   color: #98a1c0;

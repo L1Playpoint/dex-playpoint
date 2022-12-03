@@ -1,7 +1,7 @@
 .app__container {
   color: #fff;
 
-  .navbar__container{
+  .navbar__container {
     padding: 15px 2vw;
     display: flex;
     align-items: center;
@@ -9,49 +9,68 @@
     font-size: 16px;
     font-weight: 500;
 
-    .navbar__left, .navbar__right{
+    .navbar__left,
+    .navbar__right {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+
+      p {
+        font-size: 18px;
+        color: #98a1c0;
+        @media (min-width: 576px) {
+          display: none;
+        }
+      }
+
+      a {
+        font-size: 16px;
+        color: #98a1c0;
+        padding: 8px 16px;
+        text-decoration: none;
+        transition: 0.2s all ease-in-out;
+        border-radius: 12px;
+
+        @media (max-width: 576px) {
+          display: none;
+        }
+
+        &:hover {
+          background: #99a1bd14;
+        }
+      }
+
+      img {
+        width: 48px;
+      }
+
+      .MuiButton-root {
+        color: #98a1c0;
+        text-transform: capitalize;
+        font-size: 16px;
+        font-weight: 400;
+        border-radius: 16px;
+        padding: 8px 16px;
+        background: #99a1bd14;
         display: flex;
         align-items: center;
-        gap: 10px;
+        gap: 8px;
 
-        a{
-            font-size: 16px;
-            color: #98a1c0;
-            padding: 8px 16px;
-            text-decoration: none;
-            transition: .2s all ease-in-out;
-            border-radius: 12px;
-
-            &:hover{
-                background:#99a1bd14;
-            }
-        }
-        
-        img{
-            width: 48px;
+        img {
+          width: 20px;
         }
 
-        .MuiButton-root{
-            color: #98a1c0;
-            text-transform: capitalize;
-            font-size: 16px;
-            font-weight: 400;
-            border-radius: 16px;
-            padding: 8px 16px;
-            background: #99a1bd14;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-
-            img{
-                width: 20px;
-            }
-
-            &.walletBtn__container{
-                background: rgb(76, 130, 251, 0.24);
-                color: rgb(76, 130, 251);
-            }
+        &.walletBtn__container {
+          background: rgb(76, 130, 251, 0.24);
+          color: rgb(76, 130, 251);
         }
+
+        &.watchContainer {
+          @media (max-width: 576px) {
+            display: none;
+          }
+        }
+      }
     }
   }
 
@@ -63,6 +82,14 @@
     border-radius: 16px;
     display: block;
     margin: 120px auto;
+
+    @media (max-width: 912px) {
+      width: 65vw;
+    }
+
+    @media (max-width: 576px) {
+      width: 90vw;
+    }
 
     span {
       color: #98a1c0;
@@ -146,16 +173,16 @@
     }
   }
 
-  .footer__container{
+  .footer__container {
     text-align: center;
     line-height: 1.75;
     color: #98a1c0;
 
-    a{
-        color: #fff;
-        text-decoration: none;
-        font-size: 16px;
-        font-weight: 500;
+    a {
+      color: #fff;
+      text-decoration: none;
+      font-size: 16px;
+      font-weight: 500;
     }
   }
 }

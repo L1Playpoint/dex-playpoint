@@ -1,8 +1,12 @@
 import { Button } from "@mui/material";
+import { ethers } from "ethers";
 import React from "react";
 import { toast } from "react-toastify";
 import "./styles/style.css";
 const { ethereum } = window;
+import SwapFactoryABI from "./contracts/SwapFactory.json";
+import USDTAbi from "./contracts/USDTABI.json";
+import PPTTAbi from "./contracts/PPTTAbi.json";
 
 export default function App() {
   const [userAddress, setUserAddress] = React.useState("");
@@ -10,34 +14,27 @@ export default function App() {
     usdt: "",
     pptt: "",
   });
+  const SwapFactoryAddress = "0xb8f04650633b6dB7D71e7E20e3Ab3CD9e301f01C";
 
-  ethereum.on("accountsChanged", async function (accounts) {
-    setUserAddress(accounts[0]);
-  });
+  const provider = new ethers.providers.Web3Provider(ethereum);
+  const signer = provider.getSigner();
+  const SwapFactoryContract = new ethers.Contract(
+    SwapFactoryAddress,
+    SwapFactoryABI,
+    signer
+  );
 
-  const watchPPTT = () => {
-    ethereum
-      .request({
-        method: "wallet_watchAsset",
-        params: {
-          type: "ERC20",
-          options: {
-            address: "0xdDCFEEFD40F48F362ae5fcD13f0D5203CB367C64",
-            symbol: "PPTT",
-            decimals: 18,
-            image: "https://ik.imagekit.io/lexworld/Logo.png",
-          },
-        },
-      })
-      .then((success) => {
-        if (success) {
-          toast("PPTT successfully added to wallet!");
-        } else {
-          throw new Error("Something went wrong.");
-        }
-      })
-      .catch(console.error);
-  };
+  const USDTContract = new ethers.Contract(
+    "0xfd086bc7cd5c481dcc9c85ebe478a1c0b69fcbb9",
+    USDTAbi,
+    signer
+  );
+
+  const PPTTContract = new ethers.Contract(
+    "0xdDCFEEFD40F48F362ae5fcD13f0D5203CB367C64",
+    PPTTAbi,
+    signer
+  );
 
   // @note handle input change either usdt or pptt
   const handleInputAmountChange = (e, i) => {
@@ -53,7 +50,54 @@ export default function App() {
       });
     }
   };
+
   const query = userAddress === "" && true;
+  const toastSetting = {
+    position: "top-center",
+    autoClose: 5000,
+    hideProgressBar: false,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
+    progress: undefined,
+    theme: "dark",
+  };
+
+  ethereum.on("accountsChanged", async function (accounts) {
+    setUserAddress(accounts[0]);
+  });
+
+  // @note watch pptt and add to wallet
+  const watchPPTT = () => {
+    ethereum
+      .request({
+        method: "wallet_watchAsset",
+        params: {
+          type: "ERC20",
+          options: {
+            address: "0xdDCFEEFD40F48F362ae5fcD13f0D5203CB367C64",
+            symbol: "PPTT",
+            decimals: 18,
+            image: "https://ik.imagekit.io/lexworld/Logo.png",
+          },
+        },
+      })
+      .then((success) => {
+        if (success)
+          toast("🪙 PPTT successfully added to wallet!", {
+            position: "top-center",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "dark",
+          });
+        else throw new Error("Something went wrong.");
+      })
+      .catch(console.error);
+  };
 
   // @note connect wallet function
   const connectWallet = async () => {
@@ -65,7 +109,10 @@ export default function App() {
     } catch (switchError) {
       // This error code indicates that the chain has not been added to MetaMask.
       if (switchError.code === 4902) {
-        toast.error("Looks like we need to add sepolia test network.");
+        toast.error(
+          "Looks like we need to add Arbitrum network. 🏦",
+          toastSetting
+        );
         try {
           await ethereum.request({
             method: "wallet_addEthereumChain",
@@ -97,8 +144,58 @@ export default function App() {
         method: "eth_requestAccounts",
       });
       setUserAddress(accounts[0]);
+      toast("👛 Wallet connected successfully!", toastSetting);
     } else {
-      toast("Consider using Metamask or Add Extension!");
+      toast("🦊 Consider using Metamask or Add Extension!", toastSetting);
+    }
+  };
+
+  const buyPPTT = async () => {
+    const userPPTT = await PPTTContract.functions.balanceOf(userAddress);
+
+    if (inputAmount.usdt === "" || inputAmount.pptt === "")
+      return toast.error(
+        "🪙 Looks like you've forgot to pick buying amount!",
+        toastSetting
+      );
+
+    const _usdtAmount = (inputAmount.usdt * 1e6).toString();
+    const _ppttAmount = (inputAmount.pptt * 1e18).toString();
+
+    await USDTContract.functions.approve(SwapFactoryAddress, _usdtAmount);
+    await SwapFactoryContract.functions.buyPPTT(_usdtAmount, _ppttAmount);
+
+    if (userPPTT == 0) {
+      ethereum
+        .request({
+          method: "wallet_watchAsset",
+          params: {
+            type: "ERC20",
+            options: {
+              address: "0xdDCFEEFD40F48F362ae5fcD13f0D5203CB367C64",
+              symbol: "PPTT",
+              decimals: 18,
+              image: "https://ik.imagekit.io/lexworld/Logo.png",
+            },
+          },
+        })
+        .then((success) => {
+          if (success)
+            toast("🪙 PPTT successfully added to wallet!", {
+              position: "top-center",
+              autoClose: 5000,
+              hideProgressBar: false,
+              closeOnClick: true,
+              pauseOnHover: true,
+              draggable: true,
+              progress: undefined,
+              theme: "dark",
+            });
+          else throw new Error("Something went wrong.");
+        })
+        .catch(console.error);
+    } else {
+      toast("🪙 PPTT bought successfully!", toastSetting);
     }
   };
 
@@ -111,22 +208,15 @@ export default function App() {
             alt=""
             loading="lazy"
           />
+          <p>Playpoint Swap</p>
           <a href="">Swap</a>
           <a href="">Liquidity</a>
           <a href="">Docs</a>
         </div>
 
         <div className="navbar__right">
-          <Button onClick={watchPPTT}>
+          <Button onClick={watchPPTT} className="watchContainer">
             <i className="ri-upload-2-line"></i>List PPTT to Wallet
-          </Button>
-          <Button>
-            <img
-              src="https://ik.imagekit.io/domsan/Screenshot_2022-12-01_at_04.00.00-removebg-preview_BHJK2CP_K.png?ik-sdk-version=javascript-1.4.3&updatedAt=1669846541695"
-              loading="lazy"
-              alt=""
-            />{" "}
-            Arbitrum
           </Button>
           {query ? (
             <Button onClick={connectWallet} className="walletBtn__container">
@@ -145,7 +235,7 @@ export default function App() {
           )}
         </div>
       </div>
-      
+
       {/* @note swap container */}
       <div className="swap__container">
         <div className="swapTitle">
@@ -201,7 +291,7 @@ export default function App() {
 
         <Button
           onClick={() => {
-            query && connectWallet();
+            query ? connectWallet() : buyPPTT();
           }}
           className="exchangeBtn__container"
         >
