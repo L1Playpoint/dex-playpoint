@@ -201,6 +201,7 @@ export default function App() {
 
   return (
     <div className="app__container">
+      <div className="blob"></div>
       <div className="navbar__container">
         <div className="navbar__left">
           <img

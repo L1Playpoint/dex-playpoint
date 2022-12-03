@@ -1,6 +1,21 @@
 .app__container {
   color: #fff;
 }
+.app__container .blob {
+  position: absolute;
+  left: 50%;
+  top: -70vh;
+  filter: blur(200px);
+  z-index: -1;
+  transform: translateX(-50%);
+  opacity: 0.3;
+  background: rgb(39, 15, 65);
+  background: linear-gradient(135deg, rgb(39, 15, 65) 0%, rgb(68, 137, 231) 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#270f41",endColorstr="#4489e7",GradientType=1);
+  width: 70vw;
+  height: 70vw;
+  border-radius: 50%;
+}
 .app__container .navbar__container {
   padding: 15px 2vw;
   display: flex;

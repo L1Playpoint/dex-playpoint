@@ -1,6 +1,36 @@
 .app__container {
   color: #fff;
 
+  .blob {
+    position: absolute;
+    left: 50%;
+    top: -70vh;
+    filter: blur(200px);
+    z-index: -1;
+    transform: translateX(-50%);
+    opacity: 0.3;
+    background: rgb(39, 15, 65);
+    background: -moz-linear-gradient(
+      135deg,
+      rgba(39, 15, 65, 1) 0%,
+      rgba(68, 137, 231, 1) 100%
+    );
+    background: -webkit-linear-gradient(
+      135deg,
+      rgba(39, 15, 65, 1) 0%,
+      rgba(68, 137, 231, 1) 100%
+    );
+    background: linear-gradient(
+      135deg,
+      rgba(39, 15, 65, 1) 0%,
+      rgba(68, 137, 231, 1) 100%
+    );
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#270f41",endColorstr="#4489e7",GradientType=1);
+    width: 70vw;
+    height: 70vw;
+    border-radius: 50%;
+  }
+
   .navbar__container {
     padding: 15px 2vw;
     display: flex;
