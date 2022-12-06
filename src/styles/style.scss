@@ -1,0 +1,218 @@
+.app__container {
+  color: #fff;
+
+  .blob {
+    position: absolute;
+    left: 50%;
+    top: -70vh;
+    filter: blur(200px);
+    z-index: -1;
+    transform: translateX(-50%);
+    opacity: 0.3;
+    background: rgb(39, 15, 65);
+    background: -moz-linear-gradient(
+      135deg,
+      rgba(39, 15, 65, 1) 0%,
+      rgba(68, 137, 231, 1) 100%
+    );
+    background: -webkit-linear-gradient(
+      135deg,
+      rgba(39, 15, 65, 1) 0%,
+      rgba(68, 137, 231, 1) 100%
+    );
+    background: linear-gradient(
+      135deg,
+      rgba(39, 15, 65, 1) 0%,
+      rgba(68, 137, 231, 1) 100%
+    );
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#270f41",endColorstr="#4489e7",GradientType=1);
+    width: 70vw;
+    height: 70vw;
+    border-radius: 50%;
+  }
+
+  .navbar__container {
+    padding: 15px 2vw;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 16px;
+    font-weight: 500;
+
+    .navbar__left,
+    .navbar__right {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+
+      p {
+        font-size: 18px;
+        color: #98a1c0;
+        @media (min-width: 576px) {
+          display: none;
+        }
+      }
+
+      a {
+        font-size: 16px;
+        color: #98a1c0;
+        padding: 8px 16px;
+        text-decoration: none;
+        transition: 0.2s all ease-in-out;
+        border-radius: 12px;
+
+        @media (max-width: 576px) {
+          display: none;
+        }
+
+        &:hover {
+          background: #99a1bd14;
+        }
+      }
+
+      img {
+        width: 48px;
+      }
+
+      .MuiButton-root {
+        color: #98a1c0;
+        text-transform: capitalize;
+        font-size: 16px;
+        font-weight: 400;
+        border-radius: 16px;
+        padding: 8px 16px;
+        background: #99a1bd14;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+
+        img {
+          width: 20px;
+        }
+
+        &.walletBtn__container {
+          background: rgb(76, 130, 251, 0.24);
+          color: rgb(76, 130, 251);
+        }
+
+        &.watchContainer {
+          @media (max-width: 576px) {
+            display: none;
+          }
+        }
+      }
+    }
+  }
+
+  .swap__container {
+    padding: 20px;
+    width: 29vw;
+    border: 2px solid #313040;
+    background: #161922;
+    border-radius: 16px;
+    display: block;
+    margin: 120px auto;
+
+    @media (max-width: 912px) {
+      width: 65vw;
+    }
+
+    @media (max-width: 576px) {
+      width: 90vw;
+    }
+
+    span {
+      color: #98a1c0;
+    }
+
+    .swapTitle {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 22px;
+
+      .MuiButton-root {
+        min-width: 0;
+        padding: 3px 9px;
+        border-radius: 50%;
+        color: #fff;
+
+        i {
+          font-size: 20px;
+        }
+      }
+    }
+
+    .swapRate {
+      margin-top: 15px;
+      font-size: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: relative;
+      margin-bottom: 15px;
+
+      i {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+    }
+
+    label {
+      color: #98a1c0;
+      font-weight: 500;
+      font-size: 16px;
+    }
+
+    .swapInput {
+      margin-bottom: 15px;
+      margin-top: 8px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      border: 2px solid #313040;
+      border-radius: 11px;
+      padding: 8px 12px;
+
+      input {
+        flex: 1;
+        font-size: 20px;
+        padding: 8px 3px;
+        border: none;
+        outline: none;
+        background: transparent;
+        color: #fff;
+      }
+
+      img {
+        width: 30px;
+        height: 30px;
+      }
+    }
+
+    .exchangeBtn__container {
+      width: 100%;
+      padding: 12px 0;
+      background: #4c82fb;
+      color: #fff;
+      text-transform: capitalize;
+      font-size: 18px;
+      border-radius: 11px;
+    }
+  }
+
+  .footer__container {
+    text-align: center;
+    line-height: 1.75;
+    color: #98a1c0;
+
+    a {
+      color: #fff;
+      text-decoration: none;
+      font-size: 16px;
+      font-weight: 500;
+    }
+  }
+}
