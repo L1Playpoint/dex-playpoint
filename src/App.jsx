@@ -158,9 +158,25 @@ export default function App() {
         "🪙 Looks like you've forgot to pick buying amount!",
         toastSetting
       );
-
-    const _usdtAmount = (inputAmount.usdt * 1e6).toString();
-    const _ppttAmount = (inputAmount.pptt * 1e18).toString();
+    const _usdtAmount = (inputAmount.usdt * 1000000).toString();
+    function toFixed(x) {
+      if (Math.abs(x) < 1.0) {
+        var e = parseInt(x.toString().split("e-")[1]);
+        if (e) {
+          x *= Math.pow(10, e - 1);
+          x = "0." + new Array(e).join("0") + x.toString().substring(2);
+        }
+      } else {
+        var e = parseInt(x.toString().split("+")[1]);
+        if (e > 20) {
+          e -= 20;
+          x /= Math.pow(10, e);
+          x += new Array(e + 1).join("0");
+        }
+      }
+      return x;
+    }
+    const _ppttAmount = toFixed(inputAmount.pptt * 10 ** 18);
 
     await USDTContract.functions.approve(SwapFactoryAddress, _usdtAmount);
     await SwapFactoryContract.functions.buyPPTT(_usdtAmount, _ppttAmount);
